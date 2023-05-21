@@ -1,11 +1,13 @@
 ---
-layout: ../../../../layouts/PostLayout.astro
+layout: ../../layouts/PostLayout.astro
 title: "test"
 author: "kimson"
 date: +new Date()
 ---
 
-import Button from "../../../../components/Button";
+import Button from "../../components/Button";
+
+export let test = "qweqwe";
 
 안녕?
 
@@ -14,3 +16,5 @@ import Button from "../../../../components/Button";
 test
 
 <Button client:load />
+
+{test}
