@@ -1,7 +1,10 @@
 ---
-import MainLayout from "./MainLayout.tsx";
-import PostLayout from "./PostLayout.tsx";
-
+import { Container } from "@mui/material";
+import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
+import Header from "../components/Header";
+import MainLayout from "./MainLayout";
+import PostLayout from "./PostLayout";
 export interface Props {
   title: string;
 }
@@ -25,17 +28,26 @@ function renderFullPage(html, css) {
     <title>{title}</title>
   </head>
   <body>
-    {
-      type === "main" ? (
-        <MainLayout client:only>
-          <slot />
-        </MainLayout>
-      ) : (
-        <PostLayout client:only>
-          <slot />
-        </PostLayout>
-      )
-    }
+    <Header />
+    <Container
+      maxWidth='xl'
+      sx={{
+        height: "100%",
+      }}
+    >
+      {
+        type === "main" ? (
+          <MainLayout client:only>
+            <slot />
+          </MainLayout>
+        ) : (
+          <PostLayout client:only>
+            <slot />
+          </PostLayout>
+        )
+      }
+    </Container>
+    <Footer />
   </body>
 </html>
 

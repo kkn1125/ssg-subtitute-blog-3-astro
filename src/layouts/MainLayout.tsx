@@ -7,7 +7,7 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import type React from "react";
-import CTMList from "../components/CTMList";
+import SideBar from "../components/SideBar";
 import createEmotionCache from "../createEmotionCache";
 import theme from "../theme";
 
@@ -17,16 +17,16 @@ function MainLayout({ children }: { children: React.ReactElement }) {
   return (
     <CacheProvider value={cache}>
       <ThemeProvider theme={theme}>
-        <Container maxWidth='md'>
-          <Stack direction='row'>
-            <Box sx={{ flex: 1 }}>
-              <CTMList list={[]} />
-            </Box>
-            <Box id='main' sx={{ flex: 1 }}>
-              {children}
-            </Box>
-          </Stack>
-        </Container>
+        <Stack
+          direction='row'
+          sx={{
+            height: "100%",
+          }}>
+          <SideBar />
+          <Box id='main' sx={{ flex: 1 }}>
+            {children}
+          </Box>
+        </Stack>
       </ThemeProvider>
     </CacheProvider>
   );
